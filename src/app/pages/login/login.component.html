@@ -1,0 +1,37 @@
+<div class="container mt-5" style="max-width: 400px; max-height: 600px;">
+  <h2 class="text-center mb-4">Login</h2>
+
+  <form (submit)="login(); $event.preventDefault()">
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" [(ngModel)]="email" name="email"
+        required #emailModel="ngModel">
+
+      @if (emailModel.touched && emailModel.invalid) {
+      <div class="text-danger">
+        Email is required
+      </div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Enter password" [(ngModel)]="password"
+        name="password" required #passModel="ngModel">
+
+        
+      @if (passModel.touched && passModel.invalid) {
+      <div class="text-danger">
+        Email is required
+      </div>
+      }
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Login</button>
+  </form>
+
+  <div class="text-center mt-3">
+    <a routerLink="/register">Create new account</a>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold" href="/login">Task Management </a>
+
+    <!-- Toggler/collapsible Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+      aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+        <!-- Links visible when NOT logged in -->
+        <ng-container *ngIf="!isLoggedIn">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Login</a>
+          </li>
+          <!-- Uncomment if you want register link -->
+         
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+          </li> -->
+          
+        </ng-container>
+
+         <!-- Links visible when logged in -->
+        <ng-container *ngIf="isLoggedIn">
+          <li class="nav-item">
+            <a class="nav-link" href="/task-form">Add Tasks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tasks">Tasks List</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-light ms-2" (click)="logout()">Logout</button>
+          </li>
+        </ng-container>
+
+      </ul>
+    </div>
+  </div>
+</nav>

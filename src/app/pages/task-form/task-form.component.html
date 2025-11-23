@@ -1,0 +1,90 @@
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h2 class="mb-0">{{ taskId ? 'Edit Task' : 'Add Task' }}</h2>
+    </div>
+    <div class="card-body">
+
+      <!-- Alert for success or error messages -->
+      <div *ngIf="message" class="mb-3">
+        <div class="alert" [class.alert-success]="messageType==='success'" [class.alert-danger]="messageType==='error'">
+          {{ message }}
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+
+        <!-- Hidden userId -->
+        <input type="hidden" formControlName="userId">
+
+        <!-- Title -->
+        <div class="form-floating mb-3">
+          <input 
+            type="text" 
+            class="form-control" 
+            id="title" 
+            formControlName="title" 
+            placeholder="Title"
+          >
+          <label for="title">Title</label>
+          <div *ngIf="form.get('title')?.touched && form.get('title')?.invalid" class="text-danger small mt-1">
+            <span *ngIf="form.get('title')?.errors?.['required']">Title is required</span>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="form-floating mb-3">
+          <textarea 
+            class="form-control" 
+            placeholder="Description" 
+            id="description" 
+            formControlName="description" 
+            style="height: 120px;"
+          ></textarea>
+          <label for="description">Description</label>
+          <div *ngIf="form.get('description')?.touched && form.get('description')?.invalid" class="text-danger small mt-1">
+            <span *ngIf="form.get('description')?.errors?.['required']">Description is required</span>
+            <span *ngIf="form.get('description')?.errors?.['maxlength']">Description cannot exceed 250 characters</span>
+          </div>
+        </div>
+
+        <!-- Due Date -->
+        <div class="form-floating mb-3">
+          <input 
+            type="date" 
+            class="form-control" 
+            id="dueDate" 
+            formControlName="dueDate" 
+            placeholder="Due Date"
+          >
+          <label for="dueDate">Due Date</label>
+          <div *ngIf="form.get('dueDate')?.touched && form.get('dueDate')?.invalid" class="text-danger small mt-1">
+            <span *ngIf="form.get('dueDate')?.errors?.['required']">Due date is required</span>
+            <span *ngIf="form.get('dueDate')?.errors?.['futureDate']">Due date must be in the future</span>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div class="mb-3">
+          <label for="status" class="form-label">Status</label>
+          <select class="form-select" id="status" formControlName="status">
+            <option value="" disabled>Select status</option>
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+          </select>
+          <div *ngIf="form.get('status')?.touched && form.get('status')?.invalid" class="text-danger small mt-1">
+            <span *ngIf="form.get('status')?.errors?.['required']">Status is required</span>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-lg w-100">
+          {{ taskId ? 'Update Task' : 'Add Task' }}
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+ /* Professional styling */
+        .navbar {
+            background-color: #1f2937; /* Dark gray */
+        }
+        .navbar-brand, .nav-link, .dropdown-item {
+            color: #f9fafb !important; /* Light text */
+        }
+        .nav-link:hover, .dropdown-item:hover {
+            color: #3b82f6 !important; /* Blue hover */
+        }
+        .dropdown-menu {
+            background-color: #111827; /* Dark dropdown */
+        }

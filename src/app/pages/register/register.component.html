@@ -1,0 +1,53 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+  <div class="card shadow-lg p-4" style="width: 420px; border-radius: 15px;">
+    
+    <h3 class="text-center mb-4 fw-bold">
+      <i class="bi bi-person-plus-fill text-primary"></i> Register
+    </h3>
+
+    <form (submit)="register(); $event.preventDefault()">
+      
+      <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-control" placeholder="John Doe"
+               [(ngModel)]="fullName" name="fullName" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" placeholder="example@mail.com"
+               [(ngModel)]="email" name="email" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Organization</label>
+        <input type="text" class="form-control" placeholder="Company Name"
+               [(ngModel)]="organization" name="organization" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Designation</label>
+        <input type="text" class="form-control" placeholder="Job Title"
+               [(ngModel)]="designation" name="designation" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" placeholder="********"
+               [(ngModel)]="password" name="password" required>
+      </div>
+
+      <button class="btn btn-primary w-100 py-2 fw-bold" type="submit">
+        <i class="bi bi-check-circle"></i> Register
+      </button>
+
+    </form>
+
+    <div class="text-center mt-3">
+      <a routerLink="/login" class="text-decoration-none">
+        Already have an account? <strong>Login</strong>
+      </a>
+    </div>
+
+  </div>
+</div>
